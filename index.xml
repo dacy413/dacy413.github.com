@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://replace-this-with-your-hugo-site.com/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>随心</title>
+    <link>http://dacy413.github.io/</link>
+    <description>Recent content on 随心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jan 2016 08:06:42 +0800</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2016 23:12:57 +0800</lastBuildDate>
+    <atom:link href="http://dacy413.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>test</title>
-      <link>http://replace-this-with-your-hugo-site.com/post/test/</link>
-      <pubDate>Thu, 28 Jan 2016 08:06:42 +0800</pubDate>
+      <title>2016-Q1</title>
+      <link>http://dacy413.github.io/blog/2016/01/28/2016-q1/</link>
+      <pubDate>Thu, 28 Jan 2016 23:12:57 +0800</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/post/test/</guid>
-      <description></description>
+      <guid>http://dacy413.github.io/blog/2016/01/28/2016-q1/</guid>
+      <description>&lt;p&gt;1 blog搭建完成&lt;/p&gt;
+
+&lt;p&gt;2 更新文章5篇&lt;/p&gt;
+</description>
     </item>
     
   </channel>
