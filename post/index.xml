@@ -6,8 +6,46 @@
     <description>Recent content in Posts on 随心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jan 2016 23:12:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jan 2016 08:49:01 +0800</lastBuildDate>
     <atom:link href="http://dacy413.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>how to use ssh tunnel</title>
+      <link>http://dacy413.github.io/blog/2016/01/30/how-to-use-ssh-tunnel/</link>
+      <pubDate>Sat, 30 Jan 2016 08:49:01 +0800</pubDate>
+      
+      <guid>http://dacy413.github.io/blog/2016/01/30/how-to-use-ssh-tunnel/</guid>
+      <description>
+
+&lt;h2 id=&#34;本地想要访问远端但是从本地建立连接:409e60413bfcfe8bece1a1e1741b8511&#34;&gt;本地想要访问远端但是从本地建立连接&lt;/h2&gt;
+
+&lt;p&gt;ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
+
+&lt;p&gt;将本地的8000的所有数据通过remote_addr2发送到remote_addr1的3000端口，让访问本地8000端口和访问remote_addr1的3000是一样的&lt;/p&gt;
+
+&lt;p&gt;但是在这次实际应用中由于服务run在深圳深圳本地可以访问3000，我们的cache server并不能访问他们的3000端口所以第一步就是将他们的localhost的3000映射到cache server上&lt;/p&gt;
+
+&lt;p&gt;使用 ssh -R 9000:server_addr:3000 cachename@cacheip&lt;/p&gt;
+
+&lt;p&gt;这条命令是指将cache上的9000端口的所有数据经由运行本条命令的机器转发给server_addr的3000&lt;/p&gt;
+
+&lt;p&gt;因为当时的场景就是运行这条命令的机器就是运行服务的机器所以命令是 ssh -R 9000:localhost:3000 cachename@cacheip&lt;/p&gt;
+
+&lt;p&gt;如果在别的可以访问server的机器上运行就是 ssh -R 9000:server_ip:3000 cache@cacheip&lt;/p&gt;
+
+&lt;p&gt;本次场景也可以在cache上运行ssh -L 9000:localhost:3000 cachename@cacheip&lt;/p&gt;
+
+&lt;h2 id=&#34;转发的其他:409e60413bfcfe8bece1a1e1741b8511&#34;&gt;转发的其他&lt;/h2&gt;
+
+&lt;p&gt;-f 表示后台运行要停止只能kill&lt;/p&gt;
+
+&lt;p&gt;-N 表示不打开shell -T 表示不分配tty -NT 表示只是连接头并不在cache上操作&lt;/p&gt;
+
+&lt;p&gt;还有就是两端要修改 /etc/ssh/sshd_config 文件 将AllowTcpForwarding yes 写入&lt;/p&gt;
+
+&lt;p&gt;如果两端还是不通可以考虑两次tunnel，取一个中介server。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2016-Q1</title>
