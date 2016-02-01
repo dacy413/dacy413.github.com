@@ -6,8 +6,63 @@
     <description>Recent content on 随心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2016 08:49:01 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Feb 2016 14:04:24 +0800</lastBuildDate>
     <atom:link href="http://dacy413.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>fix network manager</title>
+      <link>http://dacy413.github.io/blog/2016/02/01/fix-network-manager/</link>
+      <pubDate>Mon, 01 Feb 2016 14:04:24 +0800</pubDate>
+      
+      <guid>http://dacy413.github.io/blog/2016/02/01/fix-network-manager/</guid>
+      <description>&lt;p&gt;1 set with command line&lt;/p&gt;
+
+&lt;p&gt;sudo iwlist scan&lt;/p&gt;
+
+&lt;p&gt;搜索当前环境下的wifi ssid&lt;/p&gt;
+
+&lt;p&gt;wpa_passphrase TRANTECT-NG winningeleven&lt;/p&gt;
+
+&lt;p&gt;将psk复制到下面的example中&lt;/p&gt;
+
+&lt;p&gt;wlan example&lt;/p&gt;
+
+&lt;p&gt;auto wlan0
+iface wlan0 inet dhcp
+netmask 255.255.252.0
+gateway 192.168.0.6
+wpa-driver wext
+wpa-ssid TRANTECT-NG
+wpa-ap-scan 1
+wpa-proto WPA
+wpa-pairwise CCMP
+wpa-group CCMP
+wpa-key-mgmt WPA-PSK
+wpa-psk 819c97624cbd806dbeb3a1de0c46943b3257281fec0a38c538de5ce7fb59d312&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>tunning elasticsearch performance</title>
+      <link>http://dacy413.github.io/blog/2016/01/31/tunning-elasticsearch-performance/</link>
+      <pubDate>Sun, 31 Jan 2016 00:04:02 +0800</pubDate>
+      
+      <guid>http://dacy413.github.io/blog/2016/01/31/tunning-elasticsearch-performance/</guid>
+      <description>&lt;p&gt;我们现在的ES是1.4&lt;/p&gt;
+
+&lt;p&gt;看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache&lt;/p&gt;
+
+&lt;p&gt;大量数据我们的确可以考虑使用scan &amp;amp; scroll api 之类的&lt;/p&gt;
+
+&lt;p&gt;Shards&lt;/p&gt;
+
+&lt;p&gt;index分页为几部分进行分布式多节点或者单节点部署&lt;/p&gt;
+
+&lt;p&gt;Replicas&lt;/p&gt;
+
+&lt;p&gt;1 容错 2 查询时进行负载均衡&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>how to use ssh tunnel</title>

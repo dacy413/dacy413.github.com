@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>随心 &middot; Dacy</title>
+  <title>tunning elasticsearch performance &middot; Dacy</title>
 
   
   <link rel="stylesheet" href="http://dacy413.github.io/css/poole.css">
@@ -26,10 +26,10 @@
   
   
   
-  <link href="http://dacy413.github.io/index.xml" rel="alternate" type="application/rss+xml" title="随心 &middot; Dacy" />
+  
 
-  <meta name="description" content="各种随笔...">
-  <meta name="keywords" content="野生的...">
+  <meta name="description" content="how to turn elasticsearch performance">
+  <meta name="keywords" content="ES">
   
 </head>
 <body class="theme-base-0c">
@@ -69,73 +69,32 @@
 
 
 <div class="content container">
-  <div class="posts">
+  <div class="post">
+    <h1>tunning elasticsearch performance</h1>
+    <span class="post-date">Jan 31, 2016 &middot; 1 minute read
     
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://dacy413.github.io/blog/2016/02/01/fix-network-manager/">fix network manager</a>
-      </h1>
-      <span class="post-date">Feb 1, 2016 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
-      </span>
-      
-      <p>network manager has some bugs...I will fix it....</p>
-      <a href="http://dacy413.github.io/blog/2016/02/01/fix-network-manager/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://dacy413.github.io/blog/2016/01/31/tunning-elasticsearch-performance/">tunning elasticsearch performance</a>
-      </h1>
-      <span class="post-date">Jan 31, 2016 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://dacy413.github.io/categories/es">ES</a>
-      </span>
-      
-      <p>how to turn elasticsearch performance</p>
-      <a href="http://dacy413.github.io/blog/2016/01/31/tunning-elasticsearch-performance/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://dacy413.github.io/blog/2016/01/30/how-to-use-ssh-tunnel/">how to use ssh tunnel</a>
-      </h1>
-      <span class="post-date">Jan 30, 2016 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
-      </span>
-      
-      <p>ssh tunnel demo</p>
-      <a href="http://dacy413.github.io/blog/2016/01/30/how-to-use-ssh-tunnel/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://dacy413.github.io/blog/2016/01/28/2016-q1/">2016-Q1</a>
-      </h1>
-      <span class="post-date">Jan 28, 2016 &middot; 1 minute read
-      
-      <br/>
-      <a class="label" href="http://dacy413.github.io/categories/todo">TODO</a>
-      </span>
-      
-      <p>TODO List</p>
-      <a href="http://dacy413.github.io/blog/2016/01/28/2016-q1/">Read On &rarr;</a>
-      
-    </div>
-    
-    
-    
+    <br/>
+    <a class="label" href="http://dacy413.github.io/categories/es">ES</a>
+    </span>
+    <p>我们现在的ES是1.4</p>
+
+<p>看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache</p>
+
+<p>大量数据我们的确可以考虑使用scan &amp; scroll api 之类的</p>
+
+<p>Shards</p>
+
+<p>index分页为几部分进行分布式多节点或者单节点部署</p>
+
+<p>Replicas</p>
+
+<p>1 容错 2 查询时进行负载均衡</p>
+
   </div>
+  
 </div>
+
+
 
 
 <script src="http://dacy413.github.io/js/highlight.pack.js"></script>
