@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Linux &middot; Dacy</title>
+  <title>connect wireless with cmd &middot; Dacy</title>
 
   
   <link rel="stylesheet" href="http://dacy413.github.io/css/poole.css">
@@ -26,10 +26,10 @@
   
   
   
-  <link href="http://dacy413.github.io/categories/linux/index.xml" rel="alternate" type="application/rss+xml" title="随心 &middot; Dacy" />
+  
 
-  <meta name="description" content="各种随笔...">
-  <meta name="keywords" content="野生的...">
+  <meta name="description" content="connect wireless with command line">
+  <meta name="keywords" content="network">
   
 </head>
 <body class="theme-base-0c">
@@ -69,24 +69,34 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/ssh-tunnel/">SSH Tunnel</a>
+  <div class="post">
+    <h1>connect wireless with cmd</h1>
+    <span class="post-date">Feb 5, 2016 &middot; 1 minute read
     
-    &middot;
+    <br/>
     <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
     </span>
-    &middot; <time>Feb 5, 2016</time></li>
+    <p>et with command line</p>
+
+<p>sudo iwlist scan</p>
+
+<p>搜索当前环境下的wifi ssid</p>
+
+<p>wpa_passphrase TRANTECT-NG winningeleven</p>
+
+<p>将psk复制到下面的example中</p>
+
+<p>wlan example</p>
+
+<p>auto wlan0 iface wlan0 inet dhcp netmask 255.255.252.0 gateway 192.168.0.6 wpa-driver wext wpa-ssid TRANTECT-NG wpa-ap-scan 1 wpa-proto WPA wpa-pairwise CCMP wpa-group CCMP wpa-key-mgmt WPA-PSK wpa-psk 819c97624cbd806dbeb3a1de0c46943b3257281fec0a38c538de5ce7fb59d312</p>
+
+  </div>
   
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/connect-wireless-with-cmd/">connect wireless with cmd</a>
-    
-    &middot;
-    <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
-    </span>
-    &middot; <time>Feb 5, 2016</time></li>
-  
-  </ul>
 </div>
+
+
+
+
 <script src="http://dacy413.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
