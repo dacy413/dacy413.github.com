@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Posts &middot; Dacy</title>
+  <title>change busybox login with pam in boot2docker &middot; Dacy</title>
 
   
   <link rel="stylesheet" href="http://dacy413.github.io/css/poole.css">
@@ -26,10 +26,10 @@
   
   
   
-  <link href="http://dacy413.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="随心 &middot; Dacy" />
+  
 
-  <meta name="description" content="各种随笔...">
-  <meta name="keywords" content="野生的...">
+  <meta name="description" content="How to use pam with busybox in boot2docker">
+  <meta name="keywords" content="busybox,pam">
   
 </head>
 <body class="theme-base-0c">
@@ -69,45 +69,62 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/ssh-tunnel/">SSH Tunnel</a>
+  <div class="post">
+    <h1>change busybox login with pam in boot2docker</h1>
+    <span class="post-date">Feb 5, 2016 &middot; 1 minute read
     
-    &middot;
+    <br/>
     <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
     </span>
-    &middot; <time>Feb 5, 2016</time></li>
-  
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/es-tunning/">ES Tunning</a>
     
-    &middot;
-    <a class="label" href="http://dacy413.github.io/categories/es">ES</a>
-    </span>
-    &middot; <time>Feb 5, 2016</time></li>
+
+<ul>
+<li><p>install pam</p>
+
+<ul>
+<li><p>使用tcz安装pam包 linux-pam.tcz即可</p></li>
+
+<li><p>so使用的是/usr/local/lib/security/</p></li>
+
+<li><p>pam.d使用的是/etc/pam.d/other</p></li>
+
+<li><p>所以需要装两次即cd两次后复制到/下面和直接复制到/下面</p></li>
+</ul></li>
+
+<li><p>配置 pam 编辑 /etc/pam.d/other</p>
+
+<ul>
+<li><p>auth            sufficient      pam_unix.so</p></li>
+
+<li><p>auth            sufficient      mypam.so</p></li>
+</ul></li>
+
+<li><p>自定义so</p>
+
+<ul>
+<li><p>编译自己的so 即mypam.so</p></li>
+
+<li><p>将so放置到相应的位置，即/usr/local/lib/security/</p></li>
+</ul></li>
+
+<li><p>编译自己的busybox，打开pam支持</p></li>
+
+<li><p>重置login链接到新的busybox</p></li>
+</ul>
+
+<h5 id="注意事项:820aa609d97e68f3ffb377bc35ccda29">注意事项</h5>
+
+<ul>
+<li>自定义的逻辑如果有涉及用户，则需要该用户存在。</li>
+</ul>
+
+  </div>
   
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/connect-wireless-with-cmd/">connect wireless with cmd</a>
-    
-    &middot;
-    <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
-    </span>
-    &middot; <time>Feb 5, 2016</time></li>
-  
-    <li><a href="http://dacy413.github.io/blog/2016/02/05/change-busybox-login-with-pam-in-boot2docker/">change busybox login with pam in boot2docker</a>
-    
-    &middot;
-    <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
-    </span>
-    &middot; <time>Feb 5, 2016</time></li>
-  
-    <li><a href="http://dacy413.github.io/blog/2016/01/28/2016-q1/">2016-Q1</a>
-    
-    &middot;
-    <a class="label" href="http://dacy413.github.io/categories/todo">TODO</a>
-    </span>
-    &middot; <time>Jan 28, 2016</time></li>
-  
-  </ul>
 </div>
+
+
+
+
 <script src="http://dacy413.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 

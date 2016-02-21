@@ -88,12 +88,53 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
     </item>
     
     <item>
-      <title>pam</title>
-      <link>http://dacy413.github.io/blog/2016/02/05/pam/</link>
+      <title>change busybox login with pam in boot2docker</title>
+      <link>http://dacy413.github.io/blog/2016/02/05/change-busybox-login-with-pam-in-boot2docker/</link>
       <pubDate>Fri, 05 Feb 2016 08:13:09 +0800</pubDate>
       
-      <guid>http://dacy413.github.io/blog/2016/02/05/pam/</guid>
-      <description></description>
+      <guid>http://dacy413.github.io/blog/2016/02/05/change-busybox-login-with-pam-in-boot2docker/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;install pam&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用tcz安装pam包 linux-pam.tcz即可&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;so使用的是/usr/local/lib/security/&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;pam.d使用的是/etc/pam.d/other&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;所以需要装两次即cd两次后复制到/下面和直接复制到/下面&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置 pam 编辑 /etc/pam.d/other&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;auth            sufficient      pam_unix.so&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;auth            sufficient      mypam.so&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自定义so&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;编译自己的so 即mypam.so&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将so放置到相应的位置，即/usr/local/lib/security/&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编译自己的busybox，打开pam支持&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重置login链接到新的busybox&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;注意事项:820aa609d97e68f3ffb377bc35ccda29&#34;&gt;注意事项&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自定义的逻辑如果有涉及用户，则需要该用户存在。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
