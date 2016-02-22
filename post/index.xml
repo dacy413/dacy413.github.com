@@ -143,9 +143,31 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
       <pubDate>Thu, 28 Jan 2016 23:12:57 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/01/28/2016-q1/</guid>
-      <description>&lt;p&gt;1 blog搭建完成&lt;/p&gt;
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;S1&lt;/p&gt;
 
-&lt;p&gt;2 更新文章5篇&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;熟悉前端，使用bootstrap做出一个demo。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;了解go，尝试重写pam模块。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;了解bluebird以及promise原理看bluebird源码。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;看v8源码了解相应node以及v8的原理。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;S2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;更新文章5篇 &lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;5&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;S3&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;blog搭建完成 初步完成 等待后续熟悉bootstrap后进行美化&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
