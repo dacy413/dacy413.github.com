@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Feb 2016 08:15:42 +0800</lastBuildDate>
-    <atom:link href="http://dacy413.github.io/categories/es/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://dacy413.github.io/categories/es/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>ES Tunning</title>
@@ -15,20 +17,13 @@
       <pubDate>Fri, 05 Feb 2016 08:15:42 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/02/05/es-tunning/</guid>
-      <description>&lt;p&gt;我们现在的ES是1.4&lt;/p&gt;
-
-&lt;p&gt;看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache&lt;/p&gt;
-
-&lt;p&gt;大量数据我们的确可以考虑使用scan &amp;amp; scroll api 之类的&lt;/p&gt;
-
-&lt;p&gt;Shards&lt;/p&gt;
-
-&lt;p&gt;index分页为几部分进行分布式多节点或者单节点部署&lt;/p&gt;
-
-&lt;p&gt;Replicas&lt;/p&gt;
-
-&lt;p&gt;1 容错 2 查询时进行负载均衡&lt;/p&gt;
-</description>
+      <description>我们现在的ES是1.4
+看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache
+大量数据我们的确可以考虑使用scan &amp;amp; scroll api 之类的
+Shards
+index分页为几部分进行分布式多节点或者单节点部署
+Replicas
+1 容错 2 查询时进行负载均衡</description>
     </item>
     
   </channel>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>SSH Tunnel &middot; Dacy</title>
+  <title>SSH Tunnel &middot; Darcy</title>
 
   
   <link rel="stylesheet" href="http://dacy413.github.io/css/poole.css">
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="http://dacy413.github.io/css/highlight/sunburst.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://dacy413.github.io/touch-icon-144-precomposed.png">
@@ -37,7 +38,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       
-      <h1>Dacy</h1>
+      <h1>Darcy</h1>
       <p class="lead">Follow your heart&hellip;</p>
     </div>
 
@@ -62,7 +63,7 @@
 
     
 
-    <p>Copyright &copy; 2016 <a href="http://dacy413.github.io/license/">License</a><br/>
+    <p>Copyright &copy; 2018 <a href="http://dacy413.github.io/license/">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -70,37 +71,38 @@
 
 <div class="content container">
   <div class="post">
-    <h1>SSH Tunnel</h1>
+    <h1 class="post-title">SSH Tunnel</h1>
     <span class="post-date">Feb 5, 2016 &middot; 1 minute read
     
     <br/>
     <a class="label" href="http://dacy413.github.io/categories/linux">Linux</a>
     </span>
-    <p>本地想要访问远端但是从本地建立连接
-ssh -L 8000:remote_addr1:3000 username@remote_addr2</p>
+    
 
-<p>将本地的8000的所有数据通过remote_addr2发送到remote_addr1的3000端口，让访问本地8000端口和访问remote_addr1的3000是一样的</p>
+<p>ssh tunnel可以将本地ssh连接到一个与中间服务器建立tunnel的计算机上，可以用于远程调试。</p>
 
-<p>但是在这次实际应用中由于服务run在深圳深圳本地可以访问3000，我们的cache server并不能访问他们的3000端口所以第一步就是将他们的localhost的3000映射到cache server上</p>
+<h4 id="本地想要访问远端">本地想要访问远端</h4>
 
-<p>使用 ssh -R 9000:server_addr:3000 cachename@cacheip</p>
+<p>从本地建立连接<code>ssh -L 8000:remote_addr1:3000 username@remote_addr2</code>
+通过remote_addr2的8000将所有数据通发送到remote_addr1的3000端口，让访问本地8000端口和访问remote_addr1的3000是一样的</p>
 
-<p>这条命令是指将cache上的9000端口的所有数据经由运行本条命令的机器转发给server_addr的3000</p>
+<p>这次实际应用中由于服务run在深圳本地可以访问3000，我们的cache server并不能访问他们的3000端口所以第一步就是将他们的localhost的3000映射到cache server上
+使用 <code>ssh -R 9000:server_addr:3000 cachename@cacheip</code>
+这条命令是指将cache上的9000端口的所有数据经由运行本条命令的机器转发给server_addr的3000端口
+因为当时的场景就是运行这条命令的机器就是运行服务的机器所以命令是 <code>ssh -R 9000:localhost:3000 cachename@cacheip</code>
+如果在别的可以访问server的机器上运行就是 <code>ssh -R 9000:server_ip:3000 cache@cacheip</code></p>
 
-<p>因为当时的场景就是运行这条命令的机器就是运行服务的机器所以命令是 ssh -R 9000:localhost:3000 cachename@cacheip</p>
+<p>本次场景也可以在cache上运行<code>ssh -L 9000:localhost:3000 cachename@cacheip</code>
+转发的其他
+-f 表示后台运行要停止只能kill
+-N 表示不打开shell -T 表示不分配tty -NT 表示只是连接头并不在cache上操作</p>
 
-<p>如果在别的可以访问server的机器上运行就是 ssh -R 9000:server_ip:3000 cache@cacheip</p>
+<h4 id="note">NOTE</h4>
 
-<p>本次场景也可以在cache上运行ssh -L 9000:localhost:3000 cachename@cacheip</p>
-
-<p>转发的其他
--f 表示后台运行要停止只能kill</p>
-
-<p>-N 表示不打开shell -T 表示不分配tty -NT 表示只是连接头并不在cache上操作</p>
-
-<p>还有就是两端要修改 /etc/ssh/sshd_config 文件 将AllowTcpForwarding yes 写入</p>
-
-<p>如果两端还是不通可以考虑两次tunnel，取一个中介server。</p>
+<ul>
+<li>两端要修改 /etc/ssh/sshd_config 文件 将AllowTcpForwarding yes 写入</li>
+<li>如果两端还是不通可以考虑两次tunnel，取一个中介server。</li>
+</ul>
 
   </div>
   
@@ -111,7 +113,6 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2</p>
 
 <script src="http://dacy413.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
 </body>
 </html>
 

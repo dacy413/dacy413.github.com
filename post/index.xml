@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Feb 2016 08:16:41 +0800</lastBuildDate>
-    <atom:link href="http://dacy413.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://dacy413.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>SSH Tunnel</title>
@@ -15,32 +17,11 @@
       <pubDate>Fri, 05 Feb 2016 08:16:41 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/02/05/ssh-tunnel/</guid>
-      <description>&lt;p&gt;本地想要访问远端但是从本地建立连接
-ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
-
-&lt;p&gt;将本地的8000的所有数据通过remote_addr2发送到remote_addr1的3000端口，让访问本地8000端口和访问remote_addr1的3000是一样的&lt;/p&gt;
-
-&lt;p&gt;但是在这次实际应用中由于服务run在深圳深圳本地可以访问3000，我们的cache server并不能访问他们的3000端口所以第一步就是将他们的localhost的3000映射到cache server上&lt;/p&gt;
-
-&lt;p&gt;使用 ssh -R 9000:server_addr:3000 cachename@cacheip&lt;/p&gt;
-
-&lt;p&gt;这条命令是指将cache上的9000端口的所有数据经由运行本条命令的机器转发给server_addr的3000&lt;/p&gt;
-
-&lt;p&gt;因为当时的场景就是运行这条命令的机器就是运行服务的机器所以命令是 ssh -R 9000:localhost:3000 cachename@cacheip&lt;/p&gt;
-
-&lt;p&gt;如果在别的可以访问server的机器上运行就是 ssh -R 9000:server_ip:3000 cache@cacheip&lt;/p&gt;
-
-&lt;p&gt;本次场景也可以在cache上运行ssh -L 9000:localhost:3000 cachename@cacheip&lt;/p&gt;
-
-&lt;p&gt;转发的其他
--f 表示后台运行要停止只能kill&lt;/p&gt;
-
-&lt;p&gt;-N 表示不打开shell -T 表示不分配tty -NT 表示只是连接头并不在cache上操作&lt;/p&gt;
-
-&lt;p&gt;还有就是两端要修改 /etc/ssh/sshd_config 文件 将AllowTcpForwarding yes 写入&lt;/p&gt;
-
-&lt;p&gt;如果两端还是不通可以考虑两次tunnel，取一个中介server。&lt;/p&gt;
-</description>
+      <description> ssh tunnel可以将本地ssh连接到一个与中间服务器建立tunnel的计算机上，可以用于远程调试。
+本地想要访问远端 从本地建立连接ssh -L 8000:remote_addr1:3000 username@remote_addr2 通过remote_addr2的8000将所有数据通发送到remote_addr1的3000端口，让访问本地8000端口和访问remote_addr1的3000是一样的
+这次实际应用中由于服务run在深圳本地可以访问3000，我们的cache server并不能访问他们的3000端口所以第一步就是将他们的localhost的3000映射到cache server上 使用 ssh -R 9000:server_addr:3000 cachename@cacheip 这条命令是指将cache上的9000端口的所有数据经由运行本条命令的机器转发给server_addr的3000端口 因为当时的场景就是运行这条命令的机器就是运行服务的机器所以命令是 ssh -R 9000:localhost:3000 cachename@cacheip 如果在别的可以访问server的机器上运行就是 ssh -R 9000:server_ip:3000 cache@cacheip
+本次场景也可以在cache上运行ssh -L 9000:localhost:3000 cachename@cacheip 转发的其他 -f 表示后台运行要停止只能kill -N 表示不打开shell -T 表示不分配tty -NT 表示只是连接头并不在cache上操作
+NOTE  两端要修改 /etc/ssh/sshd_config 文件 将AllowTcpForwarding yes 写入 如果两端还是不通可以考虑两次tunnel，取一个中介server。  </description>
     </item>
     
     <item>
@@ -49,20 +30,13 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
       <pubDate>Fri, 05 Feb 2016 08:15:42 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/02/05/es-tunning/</guid>
-      <description>&lt;p&gt;我们现在的ES是1.4&lt;/p&gt;
-
-&lt;p&gt;看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache&lt;/p&gt;
-
-&lt;p&gt;大量数据我们的确可以考虑使用scan &amp;amp; scroll api 之类的&lt;/p&gt;
-
-&lt;p&gt;Shards&lt;/p&gt;
-
-&lt;p&gt;index分页为几部分进行分布式多节点或者单节点部署&lt;/p&gt;
-
-&lt;p&gt;Replicas&lt;/p&gt;
-
-&lt;p&gt;1 容错 2 查询时进行负载均衡&lt;/p&gt;
-</description>
+      <description>我们现在的ES是1.4
+看了一些资料 比如设置启用Doc Values 将field data cache序列化成文件降低对查询结果进行倒排会使用大量的cache
+大量数据我们的确可以考虑使用scan &amp;amp; scroll api 之类的
+Shards
+index分页为几部分进行分布式多节点或者单节点部署
+Replicas
+1 容错 2 查询时进行负载均衡</description>
     </item>
     
     <item>
@@ -71,20 +45,10 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
       <pubDate>Fri, 05 Feb 2016 08:14:44 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/02/05/connect-wireless-with-cmd/</guid>
-      <description>&lt;p&gt;et with command line&lt;/p&gt;
-
-&lt;p&gt;sudo iwlist scan&lt;/p&gt;
-
-&lt;p&gt;搜索当前环境下的wifi ssid&lt;/p&gt;
-
-&lt;p&gt;wpa_passphrase TRANTECT-NG winningeleven&lt;/p&gt;
-
-&lt;p&gt;将psk复制到下面的example中&lt;/p&gt;
-
-&lt;p&gt;wlan example&lt;/p&gt;
-
-&lt;p&gt;auto wlan0 iface wlan0 inet dhcp netmask 255.255.252.0 gateway 192.168.0.6 wpa-driver wext wpa-ssid TRANTECT-NG wpa-ap-scan 1 wpa-proto WPA wpa-pairwise CCMP wpa-group CCMP wpa-key-mgmt WPA-PSK wpa-psk 819c97624cbd806dbeb3a1de0c46943b3257281fec0a38c538de5ce7fb59d312&lt;/p&gt;
-</description>
+      <description>sudo iwlist scan
+搜索当前环境下的wifi ssid
+wpa_passphrase TESTER winningeleven  将psk复制到下面的example中
+wlan example auto wlan0 iface wlan0 inet dhcp netmask 255.255.252.0 gateway 192.168.0.6 wpa-driver wext wpa-ssid TESTER wpa-ap-scan 1 wpa-proto WPA wpa-pairwise CCMP wpa-group CCMP wpa-key-mgmt WPA-PSK wpa-psk 819c97624cbd806dbeb3a1de0c46943b3257281fec0a38c538de5ce7fb59d312  </description>
     </item>
     
     <item>
@@ -93,82 +57,21 @@ ssh -L 8000:remote_addr1:3000 username@remote_addr2&lt;/p&gt;
       <pubDate>Fri, 05 Feb 2016 08:13:09 +0800</pubDate>
       
       <guid>http://dacy413.github.io/blog/2016/02/05/change-busybox-login-with-pam-in-boot2docker/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;install pam&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;使用tcz安装pam包 linux-pam.tcz即可&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;so使用的是/usr/local/lib/security/&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;pam.d使用的是/etc/pam.d/other&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;所以需要装两次即cd两次后复制到/下面和直接复制到/下面&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;配置 pam 编辑 /etc/pam.d/other&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;auth            sufficient      pam_unix.so&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;auth            sufficient      mypam.so&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自定义so&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;编译自己的so 即mypam.so&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;将so放置到相应的位置，即/usr/local/lib/security/&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;编译自己的busybox，打开pam支持&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;重置login链接到新的busybox&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;注意事项:820aa609d97e68f3ffb377bc35ccda29&#34;&gt;注意事项&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;自定义的逻辑如果有涉及用户，则需要该用户存在。&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2016-Q1</title>
-      <link>http://dacy413.github.io/blog/2016/01/28/2016-q1/</link>
-      <pubDate>Thu, 28 Jan 2016 23:12:57 +0800</pubDate>
-      
-      <guid>http://dacy413.github.io/blog/2016/01/28/2016-q1/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;S1&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;熟悉前端，使用bootstrap做出一个demo。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;了解go，尝试重写pam模块。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;了解bluebird以及promise原理看bluebird源码。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;看v8源码了解相应node以及v8的原理。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;S2&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;更新文章5篇 &lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;5&lt;/sub&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;S3&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;blog搭建完成 初步完成 等待后续熟悉bootstrap后进行美化&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> 因为业务需要修改linux的登录鉴权验证方式，所以研究了下pam模块，修正重新编译后实现。
+ install pam
+ 使用tcz安装pam包 linux-pam.tcz即可
+ so使用的是/usr/local/lib/security/
+ pam.d使用的是/etc/pam.d/other
+ 所以需要装两次即cd两次后复制到/下面和直接复制到/下面
+  配置 pam 编辑 /etc/pam.d/other
+ auth sufficient pam_unix.so
+ auth sufficient mypam.so
+  自定义so
+ 编译自己的so 即mypam.so
+ 将so放置到相应的位置，即/usr/local/lib/security/
+  编译自己的busybox，打开pam支持
+ 重置login链接到新的busybox
+  注意事项  自定义的逻辑如果有涉及用户，则需要该用户存在。  </description>
     </item>
     
   </channel>
